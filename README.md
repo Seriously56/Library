@@ -1,17 +1,20 @@
-##Basic Setup
+**Basic Setup**
+```lua
 -- Load the library
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Seriously56/lib/main/no"))()
-
--- Create main window
+```
+**Create main window**
+```lua
 local Window = Library:CreateWindow({
     Title = "My Script",
     AutoShow = true,
     Center = true
 })
+```
+**Library Initialization**
 
-##Library Initialization
-
--- Access library components
+```lua
+Access library components
 Library.Toggles     -- All toggle elements
 Library.Options     -- All option elements  
 Library.Labels      -- All label elements
@@ -20,31 +23,36 @@ Library.Buttons     -- All button elements
 -- Alternative access methods
 getgenv().Linoria.Toggles
 getgenv().Linoria.Options
-
-##Utility Functions
--- Safe callback execution
+```
+**Utility Functions**
+```lua
+Safe callback execution
 Library:SafeCallback(function()
     -- Your code here
 end)
-
--- Create UI elements
+```
+**Create UI elements**
+```lua
 Library:Create("Frame", {
     Size = UDim2.new(0, 100, 0, 100),
     BackgroundColor3 = Color3.fromRGB(255, 0, 0)
 })
-
--- Notifications
+```
+**Notifications**
+```lua
 Library:Notify("Hello World!", 5)  -- Message, duration
 Library:Notify({
     Title = "Warning",
     Description = "Something happened!",
     Time = 5
 })
-
--- Update colors
+```
+**Update colors**
+```lua
 Library:UpdateColorsUsingRegistry()
-
-##Basic Window
+```
+**Basic Window**
+```lua
 local Window = Library:CreateWindow({
     Title = "My Interface",
     AutoShow = true,
@@ -52,8 +60,9 @@ local Window = Library:CreateWindow({
     Size = UDim2.fromOffset(600, 400),
     TabPadding = 2
 })
-
-##Window Configuration Options
+```
+**Window Configuration Options***
+```lua
 {
     Title = "Window Title",           -- Window title text
     AutoShow = true,                  -- Automatically show window
@@ -65,9 +74,10 @@ local Window = Library:CreateWindow({
     MenuFadeTime = 0.2,               -- Animation duration
     NotifySide = "Left"               -- Notification position
 }
-
-##Tabs
--- Add tabs to window
+```
+**Tabs**
+```lua
+Add tabs to window
 local MainTab = Window:AddTab("Main")
 local SettingsTab = Window:AddTab("Settings")
 
@@ -79,8 +89,9 @@ SettingsTab:SetLayoutOrder(2)
 local CombatGroup = MainTab:AddLeftGroupbox("Combat")
 local VisualsGroup = MainTab:AddRightGroupbox("Visuals")
 local UtilityGroup = SettingsTab:AddLeftGroupbox("Utility")
-
-##Toggles
+```
+**Toggles**
+```lua
 CombatGroup:AddToggle("AimbotToggle", {
     Text = "Enable Aimbot",
     Default = false,
@@ -88,8 +99,9 @@ CombatGroup:AddToggle("AimbotToggle", {
         print("Aimbot:", Value)
     end
 })
-
-##Buttons
+```
+**Buttons**
+```lua
 UtilityGroup:AddButton("TestButton", {
     Text = "Click Me",
     Func = function()
@@ -105,8 +117,9 @@ UtilityGroup:AddButton("ResetButton", {
         print("Reset confirmed!")
     end
 })
-
-##Sliders
+```
+**Sliders**
+```lua
 CombatGroup:AddSlider("AimbotFOV", {
     Text = "Aimbot FOV",
     Default = 50,
@@ -118,8 +131,9 @@ CombatGroup:AddSlider("AimbotFOV", {
         print("FOV:", Value)
     end
 })
-
-##Dropdowns
+```
+**Dropdowns**
+```lua
 -- Basic dropdown
 CombatGroup:AddDropdown("TargetSelect", {
     Text = "Target Selection",
@@ -150,8 +164,9 @@ CombatGroup:AddDropdown("TargetPlayer", {
         print("Selected player:", Value)
     end
 })
-
-##Color Pickers
+```
+**Color Pickers**
+```lua
 CombatGroup:AddLabel('Hitbox Color'):AddColorPicker('CustomHitboxColor', {
     Text = 'Hitbox Color',
     Default = Color3.fromRGB(0, 255, 0),
@@ -160,8 +175,9 @@ CombatGroup:AddLabel('Hitbox Color'):AddColorPicker('CustomHitboxColor', {
         updateHitboxes()
     end,
 })
-
-##Keybinds
+```
+**Keybinds**
+```lua
 CombatGroup:AddKeyPicker("AimbotKey", {
     Text = "Aimbot Keybind",
     Default = "MouseButton2",
@@ -173,8 +189,9 @@ CombatGroup:AddKeyPicker("AimbotKey", {
         print("Key changed to:", New)
     end
 })
-
-##Input Boxes
+```
+**Input Boxes**
+```lua
 UtilityGroup:AddInput("WalkSpeed", {
     Text = "Walk Speed",
     Default = "16",
@@ -184,8 +201,9 @@ UtilityGroup:AddInput("WalkSpeed", {
         print("Walk speed:", Value)
     end
 })
-
-##Labels
+```
+**Labels**
+```lua
 -- Basic label
 UtilityGroup:AddLabel("Status: Ready")
 
@@ -200,11 +218,13 @@ local StatusLabel = UtilityGroup:AddLabel("StatusLabel", {
 
 -- Update label later
 StatusLabel:SetText("Connected!")
-
-##Dividers
+```
+**Dividers**
+```lua
 UtilityGroup:AddDivider()
-
-##Dependency Boxes
+```
+**Dependency Boxes**
+```lua
 -- Show elements only when conditions are met
 local AdvancedSettings = CombatGroup:AddDependencyBox()
 
@@ -225,8 +245,9 @@ AdvancedSettings:AddSlider("AimSmoothness", {
 AdvancedSettings:SetupDependencies({
     {AdvancedSettings.Toggles.AdvancedAim, true}
 })
-
-##Tabboxes
+```
+**Tabboxes**
+```lua
 -- Create tabbed sections within groupboxes
 local WeaponTabbox = CombatGroup:AddLeftTabbox("Weapons")
 
@@ -242,8 +263,9 @@ PistolTab:AddToggle("PistolAimbot", {
     Text = "Pistol Aimbot", 
     Default = false
 })
-
-##Warning Boxes
+```
+**Warning Boxes**
+```lua
 local MainTab = Window:AddTab("Main")
 
 -- Add warning/notification box to tab
@@ -261,8 +283,9 @@ MainTab:UpdateWarningBox({
     Text = "Settings saved successfully!",
     IsNormal = true  -- Blue info style
 })
-
-##Library Settings
+```
+**Library Settings**
+```lua
 -- DPI scaling
 Library:SetDPIScale(100)  -- 100% scale
 
@@ -278,8 +301,9 @@ Library.ShowCustomCursor = true
 
 -- Error notifications
 Library.NotifyOnError = true
-
-##Color Customization
+```
+**Color Customization**
+```lua
 -- Main colors
 Library.MainColor = Color3.fromRGB(28, 28, 28)
 Library.BackgroundColor = Color3.fromRGB(20, 20, 20)
@@ -293,8 +317,9 @@ Library.AccentColorDark = Library:GetDarkerColor(Library.AccentColor)
 -- Special colors
 Library.RiskColor = Color3.fromRGB(255, 50, 50)  -- For risky options
 Library.DisabledAccentColor = Color3.fromRGB(142, 142, 142)
-
-##Element Change Events
+```
+**Element Change Events**
+```lua
 local MyToggle = CombatGroup:AddToggle("MyToggle", {
     Text = "My Toggle",
     Default = false,
@@ -307,8 +332,9 @@ local MyToggle = CombatGroup:AddToggle("MyToggle", {
 MyToggle:OnChanged(function(Value)
     print("Alternative change handler:", Value)
 end)
-
-##Library Unload
+```
+**Library Unload**
+```lua
 -- Cleanup when script is stopped
 Library:OnUnload(function()
     print("Library unloading...")
@@ -317,3 +343,4 @@ end)
 
 -- Manual unload
 Library:Unload()
+```
