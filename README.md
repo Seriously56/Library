@@ -102,20 +102,18 @@ CombatGroup:AddToggle("AimbotToggle", {
 ```
 **Buttons**
 ```lua
-UtilityGroup:AddButton("TestButton", {
-    Text = "Click Me",
-    Func = function()
-        print("Button clicked!")
-    end
-})
-
--- Double-click confirmation button
-UtilityGroup:AddButton("ResetButton", {
-    Text = "Reset All",
-    DoubleClick = true,
-    Func = function()
-        print("Reset confirmed!")
-    end
+VulnGroup:AddButton({
+    Text = "Unlock All Clothing",                  -- Required: Label (string)
+    Func = function()                              -- Required: Click callback (function)
+        local successCount, totalCategories, totalItems = unlockAllClothing()
+        Library:Notify("Unlocked " .. totalItems .. " clothing items across " .. successCount .. "/" .. totalCategories .. " categories!", 5)
+    end,
+    Visible = true,                                -- Optional: Show/hide (boolean, default: true)
+    Disabled = false,                              -- Optional: Disable interactions (boolean, default: false)
+    Tooltip = "Unlocks all clothing items in the game",  -- Optional: Hover text (string)
+    DisabledTooltip = "Player data not loaded",    -- Optional: Disabled hover text (string)
+    DoubleClick = false,                           -- Optional: Confirmation prompt (boolean, default: false)
+    BlankSize = 5                                  -- Optional: Padding below (number, pixels, default: 5)
 })
 ```
 **Sliders**
