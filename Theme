@@ -39,8 +39,41 @@ local ThemeManager = {} do
 	-- if not isfolder(ThemeManager.Folder) then makefolder(ThemeManager.Folder) end
 
 	ThemeManager.Library = nil
+	
+	-- MAX MONEY STYLE COLOR SCHEME
+	local MaxMoneyColors = {
+		Background = Color3.fromRGB(15, 8, 15),
+		Surface = Color3.fromRGB(25, 15, 25),
+		Primary = Color3.fromRGB(40, 25, 35),
+		Secondary = Color3.fromRGB(40, 28, 38),
+		Border = Color3.fromRGB(60, 40, 55),
+		TextPrimary = Color3.fromRGB(255, 240, 245),
+		TextSecondary = Color3.fromRGB(200, 170, 185),
+		Success = Color3.fromRGB(100, 255, 150),
+		Error = Color3.fromRGB(255, 100, 130),
+		Warning = Color3.fromRGB(255, 200, 100),
+		Discord = Color3.fromRGB(180, 65, 160),
+		GetKey = Color3.fromRGB(255, 105, 180),
+		HoverPrimary = Color3.fromRGB(50, 35, 45),
+		HoverGetKey = Color3.fromRGB(255, 120, 200),
+		HoverDiscord = Color3.fromRGB(200, 85, 180),
+		
+		-- Gradient colors from Max Money
+		PinkLight = Color3.fromRGB(255, 182, 193),
+		PinkMedium = Color3.fromRGB(255, 105, 180),
+		PinkDark = Color3.fromRGB(255, 20, 147),
+		PinkBright = Color3.fromRGB(255, 130, 190),
+		PinkNeon = Color3.fromRGB(255, 60, 160)
+	}
+
 	ThemeManager.BuiltInThemes = {
-		['PinkGradient'] = { 1, httpService:JSONDecode('{"FontColor":"ffffff","MainColor":"242424","AccentColor":"FF1493","BackgroundColor":"1c1c1c","OutlineColor":"373737"}') },
+		['PinkGradient'] = { 1, {
+			FontColor = MaxMoneyColors.TextPrimary:ToHex(),
+			MainColor = MaxMoneyColors.Surface:ToHex(),
+			AccentColor = MaxMoneyColors.PinkMedium:ToHex(),
+			BackgroundColor = MaxMoneyColors.Background:ToHex(),
+			OutlineColor = MaxMoneyColors.Border:ToHex()
+		}},
 		['Default'] 		= { 2, httpService:JSONDecode('{"FontColor":"ffffff","MainColor":"1c1c1c","AccentColor":"0055ff","BackgroundColor":"141414","OutlineColor":"323232"}') },
 		['BBot'] 			= { 3, httpService:JSONDecode('{"FontColor":"ffffff","MainColor":"1e1e1e","AccentColor":"7e48a3","BackgroundColor":"232323","OutlineColor":"141414"}') },
 		['Fatality']		= { 4, httpService:JSONDecode('{"FontColor":"ffffff","MainColor":"1e1842","AccentColor":"c50754","BackgroundColor":"191335","OutlineColor":"3c355d"}') },
@@ -201,7 +234,7 @@ local ThemeManager = {} do
 	end
 
 	function ThemeManager:LoadDefault()
-		local theme = 'Mint'
+		local theme = 'PinkGradient' -- Default to the updated PinkGradient theme
 		local content = isfile(self.Folder .. '/themes/default.txt') and readfile(self.Folder .. '/themes/default.txt')
 
 		local isDefault = true
