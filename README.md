@@ -234,6 +234,16 @@ CombatGroup:AddToggle("AimbotToggle", {
     Callback = function(Value)
         print("Aimbot:", Value)
     end
+}):AddKeyPicker("AimbotKey", {
+    Text = "Aimbot Keybind",
+    Default = "MouseButton2",
+    Mode = "Toggle",  -- Toggle, Hold, Always
+    Callback = function(Value)
+        print("Keybind toggled:", Value)
+    end,
+    ChangedCallback = function(New)
+        print("Key changed to:", New)
+    end
 })
 ```
 **Buttons**
@@ -308,20 +318,6 @@ CombatGroup:AddLabel('Hitbox Color'):AddColorPicker('CustomHitboxColor', {
         _G.CustomHitboxColor = Color
         updateHitboxes()
     end,
-})
-```
-**Keybinds**
-```lua
-CombatGroup:AddKeyPicker("AimbotKey", {
-    Text = "Aimbot Keybind",
-    Default = "MouseButton2",
-    Mode = "Toggle",  -- Toggle, Hold, Always
-    Callback = function(Value)
-        print("Keybind toggled:", Value)
-    end,
-    ChangedCallback = function(New)
-        print("Key changed to:", New)
-    end
 })
 ```
 **Input Boxes**
