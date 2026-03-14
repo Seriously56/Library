@@ -40,7 +40,7 @@ local ThemeManager = {} do
 
 	ThemeManager.Library = nil
 	ThemeManager.BuiltInThemes = {
-		['Spectrum'] = { 1, httpService:JSONDecode('{"FontColor":"ffffff","MainColor":"1a0f0f","AccentColor":"ff3b3b","BackgroundColor":"0a0303","OutlineColor":"8b0000"}') },
+		['Spectrum'] = { 1, httpService:JSONDecode('{"FontColor":"f2e9e4","MainColor":"1e1a1d","AccentColor":"c79a6b","BackgroundColor":"0f0c0e","OutlineColor":"4a3b33"}') },
 		['Default'] 		= { 2, httpService:JSONDecode('{"FontColor":"ffffff","MainColor":"1c1c1c","AccentColor":"0055ff","BackgroundColor":"141414","OutlineColor":"323232"}') },
 		['BBot'] 			= { 3, httpService:JSONDecode('{"FontColor":"ffffff","MainColor":"1e1e1e","AccentColor":"7e48a3","BackgroundColor":"232323","OutlineColor":"141414"}') },
 		['Fatality']		= { 4, httpService:JSONDecode('{"FontColor":"ffffff","MainColor":"1e1842","AccentColor":"c50754","BackgroundColor":"191335","OutlineColor":"3c355d"}') },
