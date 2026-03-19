@@ -22,10 +22,10 @@ local Library do
         FadeSpeed = 0.2,
 
         Folders = {
-            Directory = "luna",
-            Configs = "luna/Configs",
-            Assets = "luna/Assets",
-			Sounds = "luna/Sounds",
+            Directory = "Spectrum",
+            Configs = "Spectrum/Configs",
+            Assets = "Spectrum/Assets",
+			Sounds = "Spectrum/Sounds",
         },
 
         -- Ignore below
@@ -771,7 +771,7 @@ Library.SafeCall = function(self, Function, ...)
     local Success, Result = pcall(Function, TableUnpack(Arguements))
 
     if not Success then
-        LocalPlayer:Kick("Luna Callback Error: " .. tostring(Result))
+        LocalPlayer:Kick("Spectrum Callback Error: " .. tostring(Result))
         return false
     end
 
