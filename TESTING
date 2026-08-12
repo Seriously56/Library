@@ -5008,7 +5008,7 @@ function Library:CreateWindow(...)
         Font = Enum.Font.Code;
         Position = UDim2.new(0, 14, 0, 38);
         Size = UDim2.new(1, -28, 0, 14);
-        Text = Library.IsMobile and 'DECK' or 'SIGNAL DECK';
+        Text = Library.IsMobile and 'DECK' or 'LUA';
         TextColor3 = Library.MutedTextColor;
         TextSize = 11;
         TextXAlignment = Enum.TextXAlignment.Left;
