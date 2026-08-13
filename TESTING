@@ -5703,19 +5703,6 @@ function Library:CreateWindow(...)
                 Parent = BoxInner;
             });
 
-            local ModuleLabel = Library:CreateLabel({
-                Font = Enum.Font.Code;
-                Size = UDim2.new(0, 42, 0, 22);
-                Position = UDim2.new(1, -50, 0, 4);
-                TextSize = 10;
-                Text = ModuleCode;
-                TextColor3 = Library.MutedTextColor;
-                TextXAlignment = Enum.TextXAlignment.Right;
-                ZIndex = 5;
-                Parent = BoxInner;
-            });
-            Library.RegistryMap[ModuleLabel].Properties.TextColor3 = 'MutedTextColor';
-
             local HeaderRule = Library:Create('Frame', {
                 BackgroundColor3 = Library.OutlineColor;
                 BorderSizePixel = 0;
