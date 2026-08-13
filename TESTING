@@ -1,4 +1,4 @@
--- // RX UI LIBRARY (FULL PC + MOBILE SUPPORT)  
+-- // RX UI LIBRARY (FULL PC + MOBILE SUPPORT)
 -- // Complete UI Library with Config System - All Features
 
 local Players = game:GetService("Players")
@@ -7,7 +7,11 @@ local TweenService = game:GetService("TweenService")
 local UserInputService = game:GetService("UserInputService")
 local TextService = game:GetService("TextService")
 local LocalPlayer = Players.LocalPlayer
-local Mouse = LocalPlayer:GetMouse()
+
+-- Get mouse position safely
+local function GetMouse()
+    return UserInputService:GetMouseLocation()
+end
 
 -- // CONFIG SYSTEM
 getgenv().Config = {}
@@ -321,7 +325,8 @@ local function MakeDraggable(Instance, Cutoff)
     
     Instance.InputBegan:Connect(function(Input)
         if Input.UserInputType == Enum.UserInputType.MouseButton1 then
-            local ObjPos = Vector2.new(Mouse.X - Instance.AbsolutePosition.X, Mouse.Y - Instance.AbsolutePosition.Y)
+            local MousePos = GetMouse()
+            local ObjPos = Vector2.new(MousePos.X - Instance.AbsolutePosition.X, MousePos.Y - Instance.AbsolutePosition.Y)
             if ObjPos.Y > (Cutoff or 40) then return end
             Dragging = true
             DragStart = Input.Position
@@ -863,7 +868,8 @@ function getgenv():AddGroupbox(Container, Name)
         
         Track.InputBegan:Connect(function(Input)
             if Input.UserInputType == Enum.UserInputType.MouseButton1 then
-                local X = Input.Position.X - Track.AbsolutePosition.X
+                local MousePos = GetMouse()
+                local X = MousePos.X - Track.AbsolutePosition.X
                 local Percent = math.clamp(X / Track.AbsoluteSize.X, 0, 1)
                 local Value = Min + Percent * (Max - Min)
                 if Rounding then
@@ -875,7 +881,8 @@ function getgenv():AddGroupbox(Container, Name)
         
         RunService.RenderStepped:Connect(function()
             if Dragging then
-                local X = Mouse.X - Track.AbsolutePosition.X
+                local MousePos = GetMouse()
+                local X = MousePos.X - Track.AbsolutePosition.X
                 local Percent = math.clamp(X / Track.AbsoluteSize.X, 0, 1)
                 local Value = Min + Percent * (Max - Min)
                 if Rounding then
@@ -1009,9 +1016,10 @@ function getgenv():AddGroupbox(Container, Name)
         -- Close dropdown when clicking outside
         UserInputService.InputBegan:Connect(function(Input)
             if Input.UserInputType == Enum.UserInputType.MouseButton1 then
+                local MousePos = GetMouse()
                 local AbsPos, AbsSize = List.AbsolutePosition, List.AbsoluteSize
-                if Mouse.X < AbsPos.X or Mouse.X > AbsPos.X + AbsSize.X
-                    or Mouse.Y < AbsPos.Y or Mouse.Y > AbsPos.Y + AbsSize.Y then
+                if MousePos.X < AbsPos.X or MousePos.X > AbsPos.X + AbsSize.X
+                    or MousePos.Y < AbsPos.Y or MousePos.Y > AbsPos.Y + AbsSize.Y then
                     List.Visible = false
                 end
             end
@@ -1133,13 +1141,14 @@ function getgenv():AddGroupbox(Container, Name)
     end
     
     function Groupbox:AddDivider()
-        Create("Frame", {
+        local Divider = Create("Frame", {
             BackgroundColor3 = getgenv().Colors.Outline,
             Size = UDim2.new(1, 0, 0, 1),
             Parent = Content,
         })
-        AddToRegistry(Frame, {BackgroundColor3 = "Outline"})
+        AddToRegistry(Divider, {BackgroundColor3 = "Outline"})
         Groupbox:Resize()
+        return Divider
     end
     
     function Groupbox:AddInput(Text, Placeholder, Callback)
@@ -1172,6 +1181,7 @@ function getgenv():AddGroupbox(Container, Name)
             TextSize = 12,
             Font = Enum.Font.GothamMedium,
             TextXAlignment = Enum.TextXAlignment.Left,
+            ClearTextOnFocus = false,
             Parent = Frame,
         })
         AddCorner(Input, 4)
@@ -1184,6 +1194,70 @@ function getgenv():AddGroupbox(Container, Name)
         
         Groupbox:Resize()
         return Input
+    end
+    
+    function Groupbox:AddDependencyBox()
+        local Depbox = {
+            Dependencies = {},
+            Visible = true,
+        }
+        
+        local Holder = Create("Frame", {
+            BackgroundTransparency = 1,
+            Size = UDim2.new(1, 0, 0, 0),
+            Visible = false,
+            Parent = Content,
+        })
+        
+        local Inner = Create("Frame", {
+            BackgroundTransparency = 1,
+            Size = UDim2.new(1, 0, 1, 0),
+            Parent = Holder,
+        })
+        
+        local Layout = Create("UIListLayout", {
+            FillDirection = Enum.FillDirection.Vertical,
+            SortOrder = Enum.SortOrder.LayoutOrder,
+            Parent = Inner,
+        })
+        
+        function Depbox:Resize()
+            Holder.Size = UDim2.new(1, 0, 0, Layout.AbsoluteContentSize.Y)
+            Groupbox:Resize()
+        end
+        
+        Layout:GetPropertyChangedSignal('AbsoluteContentSize'):Connect(function()
+            Depbox:Resize()
+        end)
+        
+        Holder:GetPropertyChangedSignal('Visible'):Connect(function()
+            Depbox:Resize()
+        end)
+        
+        function Depbox:Update()
+            for _, Dep in pairs(Depbox.Dependencies) do
+                local Elem = Dep[1]
+                local Value = Dep[2]
+                if Elem.Value ~= Value then
+                    Holder.Visible = false
+                    Depbox:Resize()
+                    return
+                end
+            end
+            Holder.Visible = true
+            Depbox:Resize()
+        end
+        
+        function Depbox:SetupDependencies(Dependencies)
+            Depbox.Dependencies = Dependencies
+            Depbox:Update()
+        end
+        
+        Depbox.Container = Inner
+        setmetatable(Depbox, {__index = Groupbox})
+        
+        table.insert(getgenv().UI.DependencyBoxes, Depbox)
+        return Depbox
     end
     
     return Groupbox
@@ -1208,6 +1282,6 @@ getgenv().RXUI = getgenv()
 getgenv().Library = getgenv()
 
 -- // STARTUP
-getgenv():Notify("RX UI Loaded! Press CapsLock to toggle", 2)
+getgenv():Notify("RX UI Loaded! Press CapsLock to toggle", 3, "success")
 
 return getgenv()
