@@ -5703,7 +5703,7 @@ function Library:CreateWindow(...)
                 Parent = BoxInner;
             });
 
-            [[local ModuleLabel = Library:CreateLabel({
+            --[[local ModuleLabel = Library:CreateLabel({
                 Font = Enum.Font.Code;
                 Size = UDim2.new(0, 42, 0, 22);
                 Position = UDim2.new(1, -50, 0, 4);
