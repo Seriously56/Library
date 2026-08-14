@@ -113,8 +113,8 @@ local Library = {
     RailColor = Color3.fromRGB(30, 37, 35);
 
     Black = Color3.new(0, 0, 0);
-    Font = Enum.Font.RobotoMono,
-    TitleFont = Enum.Font.FredokaOne,
+    Font = Enum.Font.GothamMedium,
+    TitleFont = Enum.Font.GothamBold,
 
     CornerRadius = 6;
     NavigationWidth = 132;
@@ -5206,7 +5206,7 @@ function Library:CreateWindow(...)
             BackgroundColor3 = 'BackgroundColor';
         });
 
-        local TabIndexLabel = Library:CreateLabel({
+        --[[local TabIndexLabel = Library:CreateLabel({
             Font = Enum.Font.GothamMedium;
             Position = UDim2.new(0, 10, 0, 0);
             Size = UDim2.new(0, 22, 1, 0);
@@ -5217,7 +5217,7 @@ function Library:CreateWindow(...)
             ZIndex = 7;
             Parent = TabButton;
         });
-        Library.RegistryMap[TabIndexLabel].Properties.TextColor3 = 'MutedTextColor';
+        Library.RegistryMap[TabIndexLabel].Properties.TextColor3 = 'MutedTextColor';]]
 
         local TabButtonLabel = Library:CreateLabel({
             Position = UDim2.new(0, CompactNavigation and 10 or 34, 0, CompactNavigation and 14 or 0);
