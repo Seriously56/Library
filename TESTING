@@ -5064,7 +5064,7 @@ function Library:CreateWindow(...)
 
     local LiveDot = Library:Create('Frame', {
         AnchorPoint = Vector2.new(0, 0.5);
-        BackgroundColor3 = Library.RouteColor;
+        BackgroundColor3 = Library.GreenColor;
         BorderSizePixel = 0;
         Position = UDim2.new(0, 0, 0.5, 0);
         Size = UDim2.fromOffset(6, 6);
@@ -5072,7 +5072,7 @@ function Library:CreateWindow(...)
         Parent = LiveStatus;
     });
     Library:AddCorner(LiveDot, 3);
-    Library:AddToRegistry(LiveDot, { BackgroundColor3 = 'RouteColor' });
+    Library:AddToRegistry(LiveDot, { BackgroundColor3 = 'GreenColor' });
 
     local LiveLabel = Library:CreateLabel({
         Font = Enum.Font.Code;
