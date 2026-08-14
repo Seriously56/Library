@@ -113,8 +113,8 @@ local Library = {
     RailColor = Color3.fromRGB(30, 37, 35);
 
     Black = Color3.new(0, 0, 0);
-    Font = Enum.Font.GothamMedium,
-    TitleFont = Enum.Font.GothamBold,
+    Font = Enum.Font.JosefinSans,
+    TitleFont = Enum.Font.ArimoBold,
 
     CornerRadius = 6;
     NavigationWidth = 132;
