@@ -5206,18 +5206,18 @@ function Library:CreateWindow(...)
             BackgroundColor3 = 'BackgroundColor';
         });
 
-        --[[local TabIndexLabel = Library:CreateLabel({
+        local TabIndexLabel = Library:CreateLabel({
             Font = Enum.Font.GothamMedium;
             Position = UDim2.new(0, 10, 0, 0);
             Size = UDim2.new(0, 22, 1, 0);
-            Text = string.format('%02d', TabIndex);
+            Text = "";
             TextColor3 = Library.MutedTextColor;
             TextSize = 11;
             TextXAlignment = Enum.TextXAlignment.Left;
             ZIndex = 7;
             Parent = TabButton;
         });
-        Library.RegistryMap[TabIndexLabel].Properties.TextColor3 = 'MutedTextColor';]]
+        Library.RegistryMap[TabIndexLabel].Properties.TextColor3 = 'MutedTextColor';
 
         local TabButtonLabel = Library:CreateLabel({
             Position = UDim2.new(0, CompactNavigation and 10 or 34, 0, CompactNavigation and 14 or 0);
