@@ -4995,7 +4995,7 @@ function Library:CreateWindow(...)
         Font = Library.TitleFont;
         Position = UDim2.new(0, 14, 0, 11);
         Size = UDim2.new(1, -28, 0, 27);
-        Text = 'RX';
+        Text = 'RX LUA';
         TextColor3 = Library.AccentColor;
         TextSize = 24;
         TextXAlignment = Enum.TextXAlignment.Left;
@@ -5008,7 +5008,7 @@ function Library:CreateWindow(...)
         Font = Enum.Font.Code;
         Position = UDim2.new(0, 14, 0, 38);
         Size = UDim2.new(1, -28, 0, 14);
-        Text = Library.IsMobile and 'RX LUA' or 'RX LUA';
+        Text = Library.IsMobile and 'DISCORD.GG/RXLUA' or 'DISCORD.GG/RXLUA';
         TextColor3 = Library.MutedTextColor;
         TextSize = 11;
         TextXAlignment = Enum.TextXAlignment.Left;
