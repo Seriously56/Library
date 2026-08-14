@@ -114,7 +114,7 @@ local Library = {
 
     Black = Color3.new(0, 0, 0);
     Font = Enum.Font.RobotoMono,
-    TitleFont = Enum.Font.GothamMedium,
+    TitleFont = Enum.Font.BuilderSansBold,
 
     CornerRadius = 6;
     NavigationWidth = 132;
