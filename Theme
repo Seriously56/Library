@@ -41,13 +41,12 @@ local ThemeManager = {} do
 	ThemeManager.Library = nil
 	ThemeManager.BuiltInThemes = {
 		['RXLUA'] = { 1, httpService:JSONDecode('{"FontColor":"e9edf3","MainColor":"171a1f","AccentColor":"ff2950","BackgroundColor":"0d0f12","OutlineColor":"2a2f37"}') },
-		['Default'] 		= { 2, httpService:JSONDecode('{"FontColor":"ffffff","MainColor":"1c1c1c","AccentColor":"0055ff","BackgroundColor":"141414","OutlineColor":"323232"}') },
-		['BBot'] 			= { 3, httpService:JSONDecode('{"FontColor":"ffffff","MainColor":"1e1e1e","AccentColor":"7e48a3","BackgroundColor":"232323","OutlineColor":"141414"}') },
-		['Fatality']		= { 4, httpService:JSONDecode('{"FontColor":"ffffff","MainColor":"1e1842","AccentColor":"c50754","BackgroundColor":"191335","OutlineColor":"3c355d"}') },
-		['Jester'] 			= {5, httpService:JSONDecode('{"FontColor":"ffffff","MainColor":"242424","AccentColor":"db4467","BackgroundColor":"1c1c1c","OutlineColor":"373737"}') },
-		['Tokyo Night'] 	= { 6, httpService:JSONDecode('{"FontColor":"ffffff","MainColor":"191925","AccentColor":"6759b3","BackgroundColor":"16161f","OutlineColor":"323232"}') },
-		['Ubuntu'] 			= { 7, httpService:JSONDecode('{"FontColor":"ffffff","MainColor":"3e3e3e","AccentColor":"e2581e","BackgroundColor":"323232","OutlineColor":"191919"}') },
-		['Quartz'] 			= { 8, httpService:JSONDecode('{"FontColor":"ffffff","MainColor":"232330","AccentColor":"426e87","BackgroundColor":"1d1b26","OutlineColor":"27232f"}') },
+		['Obsidian'] = { 3, httpService:JSONDecode('{"FontColor":"f2f2f4","MainColor":"1c1c20","AccentColor":"9b6dff","BackgroundColor":"101012","OutlineColor":"303036"}') },
+		['Crimson'] = { 4, httpService:JSONDecode('{"FontColor":"f4f1f3","MainColor":"21171b","AccentColor":"ff2950","BackgroundColor":"110d0f","OutlineColor":"3b292f"}') },
+		['Rosewood'] = { 5, httpService:JSONDecode('{"FontColor":"f5f1f2","MainColor":"211b1d","AccentColor":"e8667e","BackgroundColor":"121011","OutlineColor":"392e31"}') },
+		['Midnight'] = { 6, httpService:JSONDecode('{"FontColor":"e9e8f2","MainColor":"191922","AccentColor":"8177d9","BackgroundColor":"0e0e14","OutlineColor":"2e2e3d"}') },
+		['Ember'] = { 7, httpService:JSONDecode('{"FontColor":"f3eee9","MainColor":"211c19","AccentColor":"e8753d","BackgroundColor":"12100f","OutlineColor":"39302b"}') },
+		['Slate'] = { 8, httpService:JSONDecode('{"FontColor":"e7edf0","MainColor":"192126","AccentColor":"5f91a8","BackgroundColor":"0e1316","OutlineColor":"29373e"}') },
 	}
 
 
