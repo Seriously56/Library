@@ -113,7 +113,7 @@ local Library = {
     RailColor = Color3.fromRGB(30, 37, 35);
 
     Black = Color3.new(0, 0, 0);
-    Font = Enum.Font.UbuntuMedium,
+    Font = Enum.Font.Arimo,
     TitleFont = Enum.Font.JosefinSans,
 
     CornerRadius = 6;
