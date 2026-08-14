@@ -108,6 +108,7 @@ local Library = {
     RiskColor = Color3.fromRGB(255, 102, 110);
     SignalColor = Color3.fromRGB(255, 190, 92);
     RouteColor = Color3.fromRGB(74, 199, 196);
+    GreenColor = Color3.fromRGB(0, 255, 100),
     MutedTextColor = Color3.fromRGB(144, 158, 152);
     RailColor = Color3.fromRGB(30, 37, 35);
 
@@ -5073,17 +5074,18 @@ function Library:CreateWindow(...)
     Library:AddCorner(LiveDot, 3);
     Library:AddToRegistry(LiveDot, { BackgroundColor3 = 'RouteColor' });
 
-local LiveLabel = Library:CreateLabel({
-    Font = Enum.Font.Code;
-    Position = UDim2.new(0, 11, 0, 0);
-    Size = UDim2.new(1, -11, 1, 0);
-    Text = 'ONLINE';
-    TextColor3 = Color3.fromRGB(0, 255, 100);
-    TextSize = 11;
-    TextXAlignment = Enum.TextXAlignment.Left;
-    ZIndex = 5;
-    Parent = LiveStatus;
-});
+    local LiveLabel = Library:CreateLabel({
+        Font = Enum.Font.Code;
+        Position = UDim2.new(0, 11, 0, 0);
+        Size = UDim2.new(1, -11, 1, 0);
+        Text = 'ONLINE';
+        TextColor3 = Library.GreenColor;
+        TextSize = 11;
+        TextXAlignment = Enum.TextXAlignment.Left;
+        ZIndex = 5;
+        Parent = LiveStatus;
+    });
+    Library.RegistryMap[LiveLabel].Properties.TextColor3 = 'GreenColor';
 
     local MainSectionOuter = Library:Create('Frame', {
         BackgroundColor3 = Library.BackgroundColor;
