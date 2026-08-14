@@ -113,8 +113,8 @@ local Library = {
     RailColor = Color3.fromRGB(30, 37, 35);
 
     Black = Color3.new(0, 0, 0);
-    Font = Enum.Font.BuilderSans
-    TitleFont = Enum.Font.BuilderSansBold,
+    Font = Enum.Font.RobotoMono,
+    TitleFont = Enum.Font.RobotoMono,
 
     CornerRadius = 6;
     NavigationWidth = 132;
