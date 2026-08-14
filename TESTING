@@ -5008,7 +5008,7 @@ function Library:CreateWindow(...)
         Font = Enum.Font.Code;
         Position = UDim2.new(0, 14, 0, 38);
         Size = UDim2.new(1, -28, 0, 14);
-        Text = Library.IsMobile and 'DECK' or 'SIGNAL DECK';
+        Text = Library.IsMobile and 'RX LUA' or 'RX LUA';
         TextColor3 = Library.MutedTextColor;
         TextSize = 11;
         TextXAlignment = Enum.TextXAlignment.Left;
@@ -5133,7 +5133,7 @@ function Library:CreateWindow(...)
         Font = Enum.Font.Code;
         Position = UDim2.new(0, 14, 1, -32);
         Size = UDim2.new(1, -28, 0, 16);
-        Text = Library.IsMobile and 'TB3' or 'TB3 / READY';
+        Text = Library.IsMobile and 'RX LUA' or 'RX LUA';
         TextColor3 = Library.MutedTextColor;
         TextSize = 10;
         TextXAlignment = Enum.TextXAlignment.Left;
@@ -5703,7 +5703,7 @@ function Library:CreateWindow(...)
                 Parent = BoxInner;
             });
 
-            local ModuleLabel = Library:CreateLabel({
+            [[local ModuleLabel = Library:CreateLabel({
                 Font = Enum.Font.Code;
                 Size = UDim2.new(0, 42, 0, 22);
                 Position = UDim2.new(1, -50, 0, 4);
@@ -5714,7 +5714,7 @@ function Library:CreateWindow(...)
                 ZIndex = 5;
                 Parent = BoxInner;
             });
-            Library.RegistryMap[ModuleLabel].Properties.TextColor3 = 'MutedTextColor';
+            Library.RegistryMap[ModuleLabel].Properties.TextColor3 = 'MutedTextColor';]]
 
             local HeaderRule = Library:Create('Frame', {
                 BackgroundColor3 = Library.OutlineColor;
